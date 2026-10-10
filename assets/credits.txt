@@ -1,0 +1,10 @@
+sysu-campus.jpg
+Title: Swasey Hall of Lingnan University 03 2016-05.jpg
+Photographer: 猫猫的日记本
+Source: https://commons.wikimedia.org/wiki/File:Swasey_Hall_of_Lingnan_University_03_2016-05.jpg
+License: Creative Commons Attribution-ShareAlike 4.0 International
+License URL: https://creativecommons.org/licenses/by-sa/4.0/
+Changes: Wikimedia 1280px thumbnail; centered CSS crop in the game.
+The photograph and its resized version remain under CC BY-SA 4.0.
+
+Game and university badge assets: https://github.com/plianasp-maker/scut-game
