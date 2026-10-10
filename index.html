@@ -73,18 +73,72 @@
   .sound-icon::before { position: absolute; top: 1px; left: 1px; width: 13px; height: 16px; background: currentColor; clip-path: polygon(0 36%,30% 36%,72% 5%,72% 95%,30% 64%,0 64%); content: ""; }
   .sound-icon::after { position: absolute; top: 4px; right: 0; width: 6px; height: 10px; border-right: 2px solid currentColor; border-radius: 0 50% 50% 0; content: ""; }
   .sound-icon.is-muted::after { top: 8px; right: 0; width: 19px; height: 2px; border: 0; border-radius: 999px; background: currentColor; transform: rotate(-45deg); }
+
+  .settings-button { width: 34px; }
+  .settings-button svg { width: 20px; height: 20px; fill: none; stroke: #4c5a44; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .modal { position: fixed; inset: 0; z-index: 20; padding: 16px; background: rgba(24,43,25,.48); display: grid; place-items: center; }
+  .settings-card { width: 100%; max-width: 400px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); display: flex; flex-direction: column; padding: 20px; border-radius: 22px; background: #fff; box-shadow: 0 16px 48px rgba(16,40,20,.24); }
+  .settings-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .settings-heading h2 { margin: 0; font-size: 22px; color: #0a5c2a; }
+  .close-button { width: 32px; height: 32px; border-radius: 10px; background: #eef3ea; font-size: 24px; cursor: pointer; flex-shrink: 0; }
+  .settings-copy { margin: 8px 0 12px; color: #7c8a72; font-size: 13px; line-height: 1.5; }
+  .order-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; overscroll-behavior: contain; min-height: 0; border: 1px solid #e4ecde; border-radius: 14px; }
+  .order-row { display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 5px 8px; border-bottom: 1px solid #edf2e8; background: #fff; }
+  .order-row:last-child { border-bottom: 0; }
+  .order-row.is-dragging { background: #e3f3e6; box-shadow: inset 3px 0 #0a7c37; }
+  .order-rank { width: 20px; color: #9aa894; font-size: 12px; font-variant-numeric: tabular-nums; text-align: center; }
+  .order-row img { width: 30px; height: 30px; object-fit: contain; border-radius: 50%; background: #fff; pointer-events: none; }
+  .order-name { flex: 1; font-size: 14px; font-weight: 700; }
+  .order-handle { width: 24px; height: 34px; color: #8a977f; font-size: 22px; cursor: grab; touch-action: none; }
+  .order-row.is-dragging .order-handle { cursor: grabbing; }
+  .order-move { width: 30px; height: 32px; border-radius: 8px; background: #f2f7ee; font-size: 16px; cursor: pointer; }
+  .order-move:disabled { opacity: .3; cursor: default; }
+  .settings-note { margin: 12px 0; font-size: 12px; color: #7c8a72; line-height: 1.5; }
+  .settings-actions { flex-shrink: 0; }
+  .order-announcement { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .modal button:focus-visible, .modal a:focus-visible, .settings-button:focus-visible { outline: 2px solid #0a7c37; outline-offset: 2px; }
+  .ranking-card { width: 100%; max-width: 400px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow-y: auto; padding: 24px 20px; border-radius: 22px; background: #fff; box-shadow: 0 16px 48px rgba(16,40,20,.24); }
+  .ranking-eyebrow { margin: 0 0 10px; color: #0a7c37; font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+  .ranking-card h2 { margin: 0; color: #0a5c2a; font-size: 24px; line-height: 1.35; letter-spacing: -.03em; }
+  .ranking-copy { margin: 10px 0 18px; color: #7c8a72; font-size: 14px; line-height: 1.5; }
+  .ranking-table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
+  .ranking-table th, .ranking-table td { padding: 11px 6px; border-bottom: 1px solid #e4ecde; line-height: 1.5; }
+  .ranking-table thead { color: #8a977f; }
+  .ranking-table td:nth-child(2) { color: #0a7c37; background: #f2f7ee; font-weight: 800; white-space: nowrap; }
+  .ranking-table td:nth-child(3) { color: #7c8a72; white-space: nowrap; }
+  .ranking-table small { display: block; color: #9aa894; font-size: 10px; }
+  .ranking-sources { margin: 10px 0 20px; color: #9aa894; font-size: 10px; line-height: 1.6; }
+  .ranking-sources a { color: #7c8a72; text-underline-offset: 2px; }
+  .ranking-verdict { margin: 0 0 6px; font-weight: 800; font-size: 16px; }
+  .ranking-restore { margin: 0 0 18px; color: #7c8a72; font-size: 12px; line-height: 1.6; }
+  .ranking-card .btn { width: 100%; }
+  @media (max-width: 380px) {
+    .topbar { gap: 4px; padding: 0 6px; }
+    .brand h1 { font-size: 18px; }
+    .brand p { font-size: 10px; }
+    .metric { min-width: 40px; }
+    .icon-button { width: 34px; }
+    .restart-button { min-width: 40px; padding: 0 6px; }
+    .settings-card { padding: 16px; }
+  }
+  @media (max-width: 340px) {
+    .metric { min-width: 36px; }
+    .icon-button { width: 30px; }
+    .restart-button { min-width: 36px; }
+  }
 </style>
 </head>
 <body>
 <main class="app">
   <header class="topbar">
     <div class="brand">
-      <h1>合成中山大学</h1>
+      <h1 id="gameTitle">合成中山大学</h1>
       <p>左右拖动 · 松手落下</p>
     </div>
     <div class="metric metric-score"><span>得分</span><strong id="score">0</strong></div>
     <div class="metric"><span>最高</span><strong id="bestScore">0</strong></div>
     <div style="display:flex;gap:5px;align-items:center;">
+      <button class="icon-button settings-button" id="settingsButton" type="button" aria-label="设置合成顺序" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m9 3-.6 2.4-2 .9L4 5.7 2.5 8.3l1.7 1.8-.2 2.2-1.5 2 1.5 2.6 2.4-.6 2 .9L9 20h3l.6-2.4 2-.9 2.4.6 1.5-2.6-1.5-2 .2-2.2 1.7-1.8L17.4 6l-2.4.6-2-.9L12.4 3Z" transform="translate(1 0)"/></svg></button>
       <button class="icon-button" id="soundButton" type="button" aria-label="关闭声音" aria-pressed="true"><span class="sound-icon" id="soundIcon"></span></button>
       <button class="restart-button" id="restartButton" type="button">重开</button>
     </div>
@@ -120,36 +174,73 @@
     </div>
   </div>
 
-  <footer class="footer">合成中山大学 · 两个相同的校徽碰撞会合成更大的学校</footer>
+  <footer class="footer" id="gameFooter">合成中山大学 · 两个相同的校徽碰撞会合成更大的学校</footer>
 </main>
+
+<div class="modal" id="settingsOverlay" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" aria-describedby="settingsDescription" hidden>
+  <div class="settings-card">
+    <div class="settings-heading"><h2 id="settingsTitle">合成顺序</h2><button class="close-button" id="settingsCloseButton" type="button" aria-label="取消并关闭设置">×</button></div>
+    <p class="settings-copy" id="settingsDescription">从小到大排列，拖动校徽或点击箭头调整。</p>
+    <ol class="order-list" id="orderList" aria-label="学校顺序，从最小到最大"></ol>
+    <p class="order-announcement" id="orderAnnouncement" aria-live="polite"></p>
+    <p class="settings-note">顺序保存在当前浏览器。保存新顺序后，会重新开始本局。</p>
+    <div class="confirm-actions settings-actions"><button class="btn btn-secondary" id="settingsResetButton" type="button">恢复默认</button><button class="btn btn-primary" id="settingsSaveButton" type="button">保存顺序</button></div>
+  </div>
+</div>
+
+<div class="modal" id="orderRejectedOverlay" role="dialog" aria-modal="true" aria-labelledby="orderRejectedTitle" aria-describedby="orderRejectedCopy" hidden>
+  <div class="ranking-card">
+    <p class="ranking-eyebrow">这次排序，数据不同意</p>
+    <h2 id="orderRejectedTitle">不好意思，<br>中大这球得比华工大。</h2>
+    <p class="ranking-copy" id="orderRejectedCopy">你拖的是校徽，榜单可没跟着动。</p>
+    <table class="ranking-table">
+      <thead><tr><th scope="col">指标</th><th scope="col">中大</th><th scope="col">华工</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">软科中国大学排名<small>2026</small></th><td>13</td><td>32</td></tr>
+        <tr><th scope="row">软科世界大学学术排名<small>2026 · ARWU</small></th><td>62</td><td>101–150</td></tr>
+        <tr><th scope="row">QS 世界大学排名<small>2027</small></th><td>并列258</td><td>并列342</td></tr>
+        <tr><th scope="row">软科世界一流学科排名<br>上榜数量<small>2026</small></th><td>52个</td><td>38个</td></tr>
+      </tbody>
+    </table>
+    <p class="ranking-sources">数据来源：软科（<a href="https://www.shanghairanking.com/universities/sun-yat-sen-university" target="_blank" rel="noopener noreferrer">中大</a> / <a href="https://www.shanghairanking.com/universities/south-china-university-of-technology" target="_blank" rel="noopener noreferrer">华工</a>）、QS（<a href="https://www.topuniversities.com/universities/sun-yat-sen-university" target="_blank" rel="noopener noreferrer">中大</a> / <a href="https://www.topuniversities.com/universities/south-china-university-technology" target="_blank" rel="noopener noreferrer">华工</a>）。</p>
+    <p class="ranking-restore">本次修改未保存，已恢复上一次保存的顺序。</p>
+    <button class="btn btn-primary" id="orderRejectedButton" type="button">行，回去重排</button>
+  </div>
+</div>
 
 <script>
 (function () {
   "use strict";
 
-  /* ===== 等级链：从小到大，华南理工大学起步，中山大学最大 ===== */
-  var LEVELS = [
-    { name: "华工",   full: "华南理工大学", color: "#0a7c37", radius: 22,  asset: "assets/scut.png" },
-    { name: "同济",   full: "同济大学",     color: "#004098", radius: 27,  asset: "assets/tongji.svg" },
-    { name: "西交",   full: "西安交通大学", color: "#00337d", radius: 33,  asset: "assets/xjtu.svg" },
-    { name: "哈工大", full: "哈尔滨工业大学", color: "#00508f", radius: 41,  asset: "assets/hit.svg" },
-    { name: "武大",   full: "武汉大学",     color: "#00843d", radius: 51,  asset: "assets/whu.svg" },
-    { name: "南大",   full: "南京大学",     color: "#651877", radius: 64,  asset: "assets/nju.svg" },
-    { name: "复旦",   full: "复旦大学",     color: "#003087", radius: 80,  asset: "assets/fdu.svg" },
-    { name: "上交",   full: "上海交通大学", color: "#b01e24", radius: 100, asset: "assets/sjtu.svg" },
-    { name: "浙大",   full: "浙江大学",     color: "#004ea2", radius: 125, asset: "assets/zju.svg" },
-    { name: "北大",   full: "北京大学",     color: "#94070a", radius: 156, asset: "assets/pku.svg" },
-    { name: "清华",   full: "清华大学",     color: "#660874", radius: 190, asset: "assets/thu.svg" },
-    { name: "中山大学", full: "中山大学",    color: "#005f3c", radius: 220, asset: "assets/Sun_Yat-sen_Univ_Logo.svg", crown: true }
+  /* ===== 学校与大小分开配置，顺序改变时仍保留原版 12 档半径 ===== */
+  var SCHOOLS = [
+    { id: "scut", name: "华工",   full: "华南理工大学", color: "#0a7c37", asset: "assets/scut.png" },
+    { id: "tongji", name: "同济",   full: "同济大学",     color: "#004098", asset: "assets/tongji.svg" },
+    { id: "xjtu", name: "西交",   full: "西安交通大学", color: "#00337d", asset: "assets/xjtu.svg" },
+    { id: "hit", name: "哈工大", full: "哈尔滨工业大学", color: "#00508f", asset: "assets/hit.svg" },
+    { id: "whu", name: "武大",   full: "武汉大学",     color: "#00843d", asset: "assets/whu.svg" },
+    { id: "nju", name: "南大",   full: "南京大学",     color: "#651877", asset: "assets/nju.svg" },
+    { id: "fdu", name: "复旦",   full: "复旦大学",     color: "#003087", asset: "assets/fdu.svg" },
+    { id: "sjtu", name: "上交",   full: "上海交通大学", color: "#b01e24", asset: "assets/sjtu.svg" },
+    { id: "zju", name: "浙大",   full: "浙江大学",     color: "#004ea2", asset: "assets/zju.svg" },
+    { id: "pku", name: "北大",   full: "北京大学",     color: "#94070a", asset: "assets/pku.svg" },
+    { id: "thu", name: "清华",   full: "清华大学",     color: "#660874", asset: "assets/thu.svg" },
+    { id: "sysu", name: "中山大学", full: "中山大学",    color: "#005f3c", asset: "assets/Sun_Yat-sen_Univ_Logo.svg" }
   ];
-
-  /* ===== 预加载校徽图片（加载失败时绘制自动回退为文字） ===== */
-  var IMAGES = [];
-  LEVELS.forEach(function (L, i) {
+  var LEVEL_RADII = [22, 27, 33, 41, 51, 64, 80, 100, 125, 156, 190, 220];
+  var DEFAULT_ORDER = SCHOOLS.map(function (school) { return school.id; });
+  var ORDER_STORAGE_KEY = "merge-sysu:order:v1";
+  var schoolImages = {};
+  SCHOOLS.forEach(function (school) {
     var img = new Image();
-    img.src = L.asset;
-    IMAGES[i] = img;
+    img.src = school.asset;
+    schoolImages[school.id] = img;
   });
+  var savedOrder = loadOrder();
+  var draftOrder = savedOrder.slice();
+  var LEVELS = [];
+  var IMAGES = [];
+  applyOrder(savedOrder);
 
   /* ===== 物理 / 世界常量 ===== */
   var WORLD_W = 640;
@@ -165,8 +256,8 @@
   var GROUND_FRICTION = 2.0;   // 地面摩擦（每秒），减缓落地后的水平滑动
   var DANGER_DELAY = 0.9;
   var GRACE = 0.75;
-  var SPAWN_LEVEL_COUNT = 5;          // 随机投放前 5 级（华工~武大）
-  var MAX_LEVEL = LEVELS.length - 1;  // 中山大学
+  var SPAWN_LEVEL_COUNT = 5;          // 随机投放当前顺序的前 5 级
+  var MAX_LEVEL = LEVELS.length - 1;
   var DROP_COOLDOWN = 0.42;
 
   var canvas = document.getElementById("gameCanvas");
@@ -185,6 +276,16 @@
   var restartConfirmButton = document.getElementById("restartConfirmButton");
   var soundButton = document.getElementById("soundButton");
   var soundIcon = document.getElementById("soundIcon");
+  var settingsButton = document.getElementById("settingsButton");
+  var settingsOverlay = document.getElementById("settingsOverlay");
+  var orderList = document.getElementById("orderList");
+  var orderAnnouncement = document.getElementById("orderAnnouncement");
+  var settingsCloseButton = document.getElementById("settingsCloseButton");
+  var settingsResetButton = document.getElementById("settingsResetButton");
+  var settingsSaveButton = document.getElementById("settingsSaveButton");
+  var orderRejectedOverlay = document.getElementById("orderRejectedOverlay");
+  var orderRejectedButton = document.getElementById("orderRejectedButton");
+  var app = document.querySelector(".app");
 
   var STORAGE_KEY = "merge-sysu:best:v2";
 
@@ -202,8 +303,10 @@
   var maxLevelReached = 0;
   var hasMergedHighest = false;
   var dangerTimer = 0;
-  var mode = "playing";   // playing | ending | gameover | confirming
+  var mode = "playing";   // playing | ending | gameover | confirming | settings
   var modeBeforeConfirm = "playing";
+  var modeBeforeSettings = "playing";
+  var orderDrag = null;
   var nextItemId = 1;
   var activePointer = null;
   var tiltX = 0;   // 陀螺仪水平重力分量（左右倾斜映射，-1.2~1.2）
@@ -228,6 +331,115 @@
   }
   function saveBest() {
     try { window.localStorage.setItem(STORAGE_KEY, String(bestScore)); } catch (e) {}
+  }
+
+  /* ===== 顺序设置：保存成功的完整顺序是拒绝修改时唯一的回退来源 ===== */
+  function schoolById(id) {
+    return SCHOOLS.find(function (school) { return school.id === id; });
+  }
+  function isCompleteOrder(order) {
+    return Array.isArray(order) && order.length === SCHOOLS.length && order.every(function (id, index) {
+      return !!schoolById(id) && order.indexOf(id) === index;
+    });
+  }
+  function isAllowedOrder(order) { return order.indexOf("scut") < order.indexOf("sysu"); }
+  function loadOrder() {
+    try {
+      var order = JSON.parse(window.localStorage.getItem(ORDER_STORAGE_KEY));
+      if (isCompleteOrder(order) && isAllowedOrder(order)) return order;
+    } catch (e) {}
+    return DEFAULT_ORDER.slice();
+  }
+  function applyOrder(order) {
+    LEVELS = order.map(function (id, index) {
+      return Object.assign({}, schoolById(id), { radius: LEVEL_RADII[index], crown: index === order.length - 1 });
+    });
+    IMAGES = order.map(function (id) { return schoolImages[id]; });
+  }
+  function updateGameTitle() {
+    var title = "合成" + LEVELS[MAX_LEVEL].name;
+    document.getElementById("gameTitle").textContent = title;
+    document.getElementById("gameFooter").textContent = title + " · 两个相同的校徽碰撞会合成更大的学校";
+    document.title = title;
+  }
+  function renderOrderList(focusId, focusAction) {
+    orderList.innerHTML = draftOrder.map(function (id, index) {
+      var school = schoolById(id);
+      return '<li class="order-row' + (orderDrag && orderDrag.id === id ? ' is-dragging' : '') + '" data-school="' + id + '">' +
+        '<span class="order-rank">' + (index + 1) + '</span><img src="' + school.asset + '" alt="" draggable="false">' +
+        '<span class="order-name" title="' + school.full + '">' + school.name + '</span>' +
+        '<button class="order-handle" type="button" data-action="drag" aria-label="拖动' + school.full + '调整顺序">⠿</button>' +
+        '<button class="order-move" type="button" data-action="up" aria-label="' + school.full + '上移"' + (index === 0 ? ' disabled' : '') + '>↑</button>' +
+        '<button class="order-move" type="button" data-action="down" aria-label="' + school.full + '下移"' + (index === draftOrder.length - 1 ? ' disabled' : '') + '>↓</button></li>';
+    }).join("");
+    if (focusId) {
+      var button = orderList.querySelector('[data-school="' + focusId + '"] [data-action="' + focusAction + '"]');
+      if (button.disabled) button = orderList.querySelector('[data-school="' + focusId + '"] [data-action="drag"]');
+      button.focus({ preventScroll: true });
+    }
+  }
+  function moveSchool(id, targetIndex) {
+    var from = draftOrder.indexOf(id);
+    targetIndex = clamp(targetIndex, 0, draftOrder.length - 1);
+    if (from < 0 || from === targetIndex) return;
+    draftOrder.splice(from, 1);
+    draftOrder.splice(targetIndex, 0, id);
+    orderAnnouncement.textContent = schoolById(id).full + "已移到第" + (targetIndex + 1) + "级";
+    renderOrderList();
+  }
+  function openSettings() {
+    if (mode !== "playing" && mode !== "gameover") return;
+    modeBeforeSettings = mode;
+    mode = "settings";
+    activePointer = null;
+    draftOrder = savedOrder.slice();
+    orderDrag = null;
+    renderOrderList();
+    orderAnnouncement.textContent = "";
+    orderList.scrollTop = 0;
+    settingsOverlay.hidden = false;
+    app.inert = true;
+    settingsCloseButton.focus();
+  }
+  function closeSettings(restart) {
+    settingsOverlay.hidden = true;
+    orderRejectedOverlay.hidden = true;
+    orderDrag = null;
+    draftOrder = savedOrder.slice();
+    app.inert = false;
+    lastTime = 0;
+    if (restart) startGame();
+    else {
+      mode = modeBeforeSettings;
+      requestFrame();
+    }
+    settingsButton.focus();
+  }
+  function saveSettings() {
+    if (mode !== "settings" || !orderRejectedOverlay.hidden || orderDrag || !isCompleteOrder(draftOrder)) return;
+    if (!isAllowedOrder(draftOrder)) {
+      draftOrder = savedOrder.slice();
+      renderOrderList();
+      orderAnnouncement.textContent = "已恢复上一次保存的顺序";
+      settingsOverlay.hidden = true;
+      orderRejectedOverlay.hidden = false;
+      orderRejectedButton.focus();
+      return;
+    }
+    var changed = draftOrder.some(function (id, index) { return id !== savedOrder[index]; });
+    if (changed) {
+      savedOrder = draftOrder.slice();
+      try { window.localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(savedOrder)); } catch (e) {}
+      applyOrder(savedOrder);
+      updateGameTitle();
+    }
+    closeSettings(changed);
+  }
+  function closeOrderRejected() {
+    orderRejectedOverlay.hidden = true;
+    settingsOverlay.hidden = false;
+    orderList.scrollTop = 0;
+    settingsSaveButton.focus();
   }
 
   /* ===== 物体 ===== */
@@ -288,12 +500,13 @@
     highestItemEl.textContent = top.name;
     highestItemEl.style.background = top.color;
     highestItemEl.style.boxShadow = top.crown ? "0 0 0 3px #e6b422" : "none";
-    gameOverMessageEl.textContent = hasMergedHighest ? "已合成中山大学！" : "差一点就更大了";
+    gameOverMessageEl.textContent = hasMergedHighest ? "已合成" + LEVELS[MAX_LEVEL].full + "！" : "差一点就更大了";
     newRecordEl.hidden = !madeRecord;
     gameOverOverlay.hidden = false;
   }
 
   function openConfirm() {
+    if (mode !== "playing") return;
     modeBeforeConfirm = mode;
     mode = "confirming";
     restartConfirmOverlay.hidden = false;
@@ -677,6 +890,81 @@
     updateSoundIcon();
     if (soundEnabled) { ensureAudio(); tone(440, 0.08, 0.035, "sine", 0); }
   });
+  settingsButton.addEventListener("click", openSettings);
+  settingsCloseButton.addEventListener("click", function () { closeSettings(false); });
+  settingsSaveButton.addEventListener("click", saveSettings);
+  settingsResetButton.addEventListener("click", function () {
+    draftOrder = DEFAULT_ORDER.slice();
+    renderOrderList();
+    orderAnnouncement.textContent = "已恢复默认顺序，点击保存后生效";
+  });
+  orderRejectedButton.addEventListener("click", closeOrderRejected);
+  settingsOverlay.addEventListener("click", function (e) {
+    if (e.target === settingsOverlay) closeSettings(false);
+  });
+  orderList.addEventListener("click", function (e) {
+    var button = e.target.closest("button[data-action]");
+    if (!button || button.disabled || orderDrag) return;
+    var id = button.closest("[data-school]").dataset.school;
+    var action = button.dataset.action;
+    if (action === "up" || action === "down") {
+      moveSchool(id, draftOrder.indexOf(id) + (action === "up" ? -1 : 1));
+      renderOrderList(id, action);
+    }
+  });
+  orderList.addEventListener("pointerdown", function (e) {
+    var handle = e.target.closest("[data-action=drag]");
+    if (!handle || orderDrag || e.button !== 0) return;
+    orderDrag = { id: handle.closest("[data-school]").dataset.school, pointerId: e.pointerId };
+    orderList.setPointerCapture(e.pointerId);
+    renderOrderList();
+    e.preventDefault();
+  });
+  orderList.addEventListener("pointermove", function (e) {
+    if (!orderDrag || e.pointerId !== orderDrag.pointerId) return;
+    var rect = orderList.getBoundingClientRect();
+    if (e.clientY < rect.top + 30) orderList.scrollTop -= 12;
+    if (e.clientY > rect.bottom - 30) orderList.scrollTop += 12;
+    var closest = draftOrder.indexOf(orderDrag.id), distance = Infinity;
+    Array.from(orderList.children).forEach(function (row, index) {
+      var box = row.getBoundingClientRect();
+      var delta = Math.abs(e.clientY - (box.top + box.height / 2));
+      if (delta < distance) { distance = delta; closest = index; }
+    });
+    moveSchool(orderDrag.id, closest);
+    e.preventDefault();
+  });
+  function finishOrderDrag(e) {
+    if (!orderDrag || e.pointerId !== orderDrag.pointerId) return;
+    var id = orderDrag.id;
+    orderDrag = null;
+    if (orderList.hasPointerCapture(e.pointerId)) orderList.releasePointerCapture(e.pointerId);
+    renderOrderList(id, "drag");
+  }
+  orderList.addEventListener("pointerup", finishOrderDrag);
+  orderList.addEventListener("pointercancel", finishOrderDrag);
+  orderList.addEventListener("lostpointercapture", finishOrderDrag);
+  document.addEventListener("keydown", function (e) {
+    if (mode !== "settings") return;
+    var rejected = !orderRejectedOverlay.hidden;
+    if (e.key === "Escape") {
+      e.preventDefault();
+      if (rejected) closeOrderRejected(); else closeSettings(false);
+    } else if (e.key === "Tab") {
+      var modal = rejected ? orderRejectedOverlay : settingsOverlay;
+      var controls = Array.from(modal.querySelectorAll("button:not(:disabled), a[href]"));
+      var first = controls[0], last = controls[controls.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    } else if (!rejected && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
+      var handle = e.target.closest("[data-action=drag]");
+      if (!handle) return;
+      e.preventDefault();
+      var id = handle.closest("[data-school]").dataset.school;
+      moveSchool(id, draftOrder.indexOf(id) + (e.key === "ArrowUp" ? -1 : 1));
+      renderOrderList(id, "drag");
+    }
+  });
 
   /* ===== 陀螺仪：手机倾斜映射为水平重力 ===== */
   var gyroAsked = false;
@@ -712,6 +1000,7 @@
   /* ===== 启动 ===== */
   bestScore = loadBest();
   bestEl.textContent = String(bestScore);
+  updateGameTitle();
   updateSoundIcon();
   syncCanvas();
   startGame();

@@ -8,6 +8,16 @@
 
 华南理工大学 → 同济大学 → 西安交通大学 → 哈尔滨工业大学 → 武汉大学 → 南京大学 → 复旦大学 → 上海交通大学 → 浙江大学 → 北京大学 → 清华大学 → 中山大学。
 
+## 自定义顺序
+
+点击右上角齿轮打开设置，拖动校徽或使用上下箭头排列 12 所学校。顺序从最小到最大，原版的 12 档球体大小和物理规则保持不变。拖动按钮也支持键盘上下方向键。
+
+保存新顺序后重新开局，并在当前浏览器记住设置；未修改顺序直接保存或取消设置会继续本局。「恢复默认」仅调整设置中的草稿，点击保存后才会生效。最大等级的校徽、游戏标题和合成成功文案会随顺序变化。
+
+中山大学必须排在华南理工大学之后。若保存的草稿不满足这一规则，会显示数据弹窗，拒绝整次修改并恢复上一次成功保存的完整顺序；本局进度也会保留。
+
+弹窗数据采用榜单机构的学校档案：软科 2026 年中国大学排名、世界大学学术排名和世界一流学科排名上榜数量（[中大](https://www.shanghairanking.com/universities/sun-yat-sen-university)、[华工](https://www.shanghairanking.com/universities/south-china-university-of-technology)）；QS 2027 年世界大学排名（[中大](https://www.topuniversities.com/universities/sun-yat-sen-university)、[华工](https://www.topuniversities.com/universities/south-china-university-technology)）。年份、并列名次及排名区间按原始页面标注。
+
 ## 运行和部署
 
 纯静态 HTML / JavaScript，无需安装依赖或构建。可在本目录运行 `python -m http.server 8080` 后访问 `http://localhost:8080`。
