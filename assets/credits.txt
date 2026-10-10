@@ -1,10 +1,9 @@
 sysu-campus.jpg
-Title: Swasey Hall of Lingnan University 03 2016-05.jpg
-Photographer: 猫猫的日记本
-Source: https://commons.wikimedia.org/wiki/File:Swasey_Hall_of_Lingnan_University_03_2016-05.jpg
-License: Creative Commons Attribution-ShareAlike 4.0 International
-License URL: https://creativecommons.org/licenses/by-sa/4.0/
-Changes: Wikimedia 1280px thumbnail; centered CSS crop in the game.
-The photograph and its resized version remain under CC BY-SA 4.0.
+Subject: 中山大学广州校区南校园怀士堂
+Source: 中山大学官网「校园风光」的广州校区南校园图库
+Source page: https://www.sysu.edu.cn/zdkd1/xyfg1.htm
+Original image: https://www.sysu.edu.cn/images/22/03/17/1ylx961qyh/hst.jpg
+Copyright: 原照片权利人；本项目不对照片声明另行授权。
+Changes: 原图未修改，游戏使用 CSS 居中裁切显示。
 
 Game and university badge assets: https://github.com/plianasp-maker/scut-game

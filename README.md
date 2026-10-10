@@ -18,4 +18,4 @@ GitHub Pages 从 `main` 分支根目录发布，更新文件并推送到 `main` 
 
 校徽素材沿用原仓库。
 
-背景照片：[Swasey Hall of Lingnan University 03 2016-05.jpg](https://commons.wikimedia.org/wiki/File:Swasey_Hall_of_Lingnan_University_03_2016-05.jpg)，作者：猫猫的日记本，许可：[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。本项目使用 Wikimedia 提供的 1280 像素版本，页面以 CSS 居中裁切显示；照片及其缩放版本继续遵循 CC BY-SA 4.0。来源信息也保存在 [assets/credits.txt](assets/credits.txt)。
+背景照片来自[中山大学官网「校园风光」](https://www.sysu.edu.cn/zdkd1/xyfg1.htm)的广州校区南校园图库：[怀士堂照片原图](https://www.sysu.edu.cn/images/22/03/17/1ylx961qyh/hst.jpg)。保存官网原图，页面以 CSS 居中裁切显示。照片版权属于原权利人，来源信息也保存在 [assets/credits.txt](assets/credits.txt)。
